@@ -42,7 +42,7 @@ public:
 private:
     size_t get_tokens_available(const std::chrono::steady_clock::time_point& current_time);
 
-    constexpr static uint64_t elapsed_time(
+    static uint64_t elapsed_time(
             const std::chrono::steady_clock::time_point& ref_time,
             const std::chrono::steady_clock::time_point& current_time);
 
@@ -117,7 +117,7 @@ inline size_t TokenBucket::get_tokens_available(
     return std::min(capacity_, tokens_ + size_t((rate_ * elapsed_time(timestamp_, current_time)) / std::milli::den));
 }
 
-inline constexpr uint64_t TokenBucket::elapsed_time(
+inline uint64_t TokenBucket::elapsed_time(
         const std::chrono::steady_clock::time_point& ref_time,
         const std::chrono::steady_clock::time_point& current_time)
 {

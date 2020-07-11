@@ -156,6 +156,14 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         $<$<BOOL:${UAGENT_DISCOVERY_PROFILE}>:src/cpp/transport/discovery/DiscoveryServerLinux.cpp>
         $<$<BOOL:${UAGENT_P2P_PROFILE}>:src/cpp/transport/p2p/AgentDiscovererLinux.cpp>
         )
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Android")
+    set(TRANSPORT_SRCS
+        src/cpp/transport/udp/UDPServerLinux.cpp
+        src/cpp/transport/tcp/TCPServerLinux.cpp
+        src/cpp/transport/serial/SerialServerLinux.cpp
+        $<$<BOOL:${UAGENT_DISCOVERY_PROFILE}>:src/cpp/transport/discovery/DiscoveryServerLinux.cpp>
+        $<$<BOOL:${UAGENT_P2P_PROFILE}>:src/cpp/transport/p2p/AgentDiscovererLinux.cpp>
+        )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     set(TRANSPORT_SRCS
         src/cpp/transport/udp/UDPServerWindows.cpp
